@@ -19,7 +19,7 @@ spec:
     metadata:
       annotations:
         prometheus.io/scrape: "true"
-        sidecar.istio.io/rewriteAppHTTPProbers: "false"
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
       labels:
         app: backend
     spec:
