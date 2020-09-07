@@ -1,31 +1,16 @@
 apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: team1-gateway
-spec:
-  selector:
-    istio: istio-ingressgateway.istio-system.svc.cluster.local
-  servers:
-  - port:
-      number: 80
-      name: http
-      protocol: HTTP
-    hosts:
-    - "*"
----
-apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: counter
+  name: team1-backend
 spec:
   gateways:
-  - team1-gateway
+  - istio-system/ingressgateway
   hosts:
   - '*'
   http:
   - match:
     - uri:
-      prefix: /api/team1
+      prefix: /api
     route:
     - destination:
         host: backend
